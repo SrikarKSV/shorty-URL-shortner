@@ -8,7 +8,7 @@
   <title>Shorty | URL shortner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap&text=ComingSoon...Made with ❤️ by Akash and Srikar" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="https://img.icons8.com/color/50/000000/shorten-urls.png" type="image/x-icon">
   <style>
     * {
@@ -26,10 +26,10 @@
       width: 100vw;
       background: #0E141B;
       position: relative;
+      color: #fff;
     }
 
     h1 {
-      color: #fff;
       font-size: clamp(3rem, 10vw, 10rem);
       transition: transform .5s;
       cursor: pointer;
@@ -49,7 +49,7 @@
     }
 
     h1:hover {
-      transform: scale(1.5);
+      transform: scale(1.2);
     }
 
     h1:hover::before {
@@ -66,7 +66,20 @@
 </head>
 
 <body>
-  <h1>Coming soon...</h1>
+  <?php
+
+  require "credentials.php";
+
+  $conn = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DATABASENAME);
+
+  // check connection
+  if (!$conn) {
+    echo '<h1>Connection error' . mysqli_connect_error() . "</h1>";
+  } else {
+    echo '<h1>Connection successful!!</h1>';
+  }
+
+  ?>
 
   <footer>
     <p>Made with ❤️ by Akash and Srikar</p>
