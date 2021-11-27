@@ -1,85 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include "templates/header.php";
+require "credentials.php";
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shorty | URL shortner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="https://img.icons8.com/color/50/000000/shorten-urls.png" type="image/x-icon">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+$shortened_url = "";
 
-    body {
-      font-family: 'Sacramento', cursive;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      width: 100vw;
-      background: #0E141B;
-      position: relative;
-      color: #fff;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 10vw, 10rem);
-      transition: transform .5s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    h1::before {
-      content: "";
-      position: absolute;
-      background-color: #fff;
-      bottom: 10px;
-      left: 0;
-      height: 10px;
-      width: 0;
-      transition: all .5s;
-      z-index: -1;
-    }
-
-    h1:hover {
-      transform: scale(1.2);
-    }
-
-    h1:hover::before {
-      width: 100%;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 5px;
-      color: #f3f3f3;
-      font-size: clamp(1rem, 5vw, 2rem);
-    }
-  </style>
-</head>
-
-<body>
-  <?php
-
-  require "credentials.php";
-
+if (isset($_GET["id"])) {
   $conn = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DATABASENAME);
+  $id = $_GET["id"];
+  $select_sql = "SELECT * FROM url WHERE id='$id'";
+  $result = mysqli_query($conn, $select_sql);
+  $shortened_url = mysqli_fetch_assoc($result);
+  header("Location: {$shortened_url['url']}");
 
-  // check connection
-  if (!$conn) {
-    echo '<h1>Connection error' . mysqli_connect_error() . "</h1>";
+  mysqli_close($conn);
+}
+
+if (isset($_POST["submit"])) {
+  $conn = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DATABASENAME);
+  $url = $_POST["url"];
+
+
+  $bytes = random_bytes(5);
+  $generated_id = bin2hex($bytes);
+  $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', NULL)";
+
+  if (mysqli_query($conn, $insert_sql)) {
   } else {
-    echo '<h1>Connection successful!!</h1>';
+    echo 'Query error: ' . mysqli_error($conn);
   }
 
-  ?>
+  $select_sql = "SELECT * FROM url WHERE id='$generated_id'";
+
+  $result = mysqli_query($conn, $select_sql);
+  $shortened_url = mysqli_fetch_assoc($result);
+
+  mysqli_close($conn);
+}
+?>
+
+<title>Shorty | URL shortner</title>
+
+<body>
+  <main>
+    <h1>Shorten URL</h1>
+
+    <form action="index.php" method="post">
+      <label for="url">URL</label>
+      <input type="text" name="url" id="url">
+      <input type="submit" name="submit" value="Shorten">
+    </form>
+
+
+    <?php
+    if ($shortened_url) {
+    ?>
+      <p>URL is shortened: <a href="<?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?>"><?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?></a></p>
+    <?php } ?>
+  </main>
 
   <footer>
     <p>Made with ❤️ by Akash and Srikar</p>
