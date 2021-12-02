@@ -40,16 +40,22 @@ if (isset($_GET["id"])) {
 if (isset($_POST["submit"])) {
   $conn = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DATABASENAME);
   $url = $_POST["url"];
-  $expiry_date = NULL;
+  $expiry_date = $_POST["expiryDate"] == "custom" ? $_POST["customDate"] : NULL;
+  $userId = isset($_SESSION["userid"]) ? $_SESSION["userid"] : NULL;
   $expiry_date_set = $_POST["expiryDate"];
-
-  if ($expiry_date_set == "custom") {
-    $expiry_date = $_POST["customDate"];
-  }
 
   $bytes = random_bytes(5);
   $generated_id = bin2hex($bytes);
-  $insert_sql = $expiry_date == NULL ? "INSERT INTO url VALUES('$generated_id', '$url', NULL)" : "INSERT INTO url VALUES('$generated_id', '$url', '$expiry_date')";
+
+  if ($expiry_date == NULL && $userId == NULL) {
+    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', NULL, NULL);";
+  } else if ($expiry_date && $userId == NULL) {
+    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', '$expiry_date', NULL);";
+  } else if ($expiry_date == NULL && $userId) {
+    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', NULL, '$userId');";
+  } else if ($expiry_date && $userId) {
+    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', '$expiry_date', '$userId');";
+  }
 
   if (!mysqli_query($conn, $insert_sql)) {
     header("location: ./error.php?error=500");
@@ -60,7 +66,7 @@ if (isset($_POST["submit"])) {
   $select_sql = "SELECT * FROM url WHERE id='$generated_id'";
 
   $result = mysqli_query($conn, $select_sql);
-  if (!mysqli_query($conn, $insert_sql)) {
+  if (!$result) {
     header("location: ./error.php?error=500");
     mysqli_close($conn);
     exit();
