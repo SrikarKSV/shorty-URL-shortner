@@ -89,7 +89,8 @@ if (isset($_POST["submit"])) {
     <input type="submit" name="submit" value="Sign up">
   </form>
 </main>
-<script src="../public/js/registerValidation.js"></script>
-</body>
 
-</html>
+<?php
+$js_route = "../public/js/registerValidation.js";
+include "../templates/footer.php";
+?>

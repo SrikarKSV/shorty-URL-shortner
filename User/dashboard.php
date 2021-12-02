@@ -2,6 +2,7 @@
 $title = "Dashboard | URL shortner";
 $css_path = "../public/css/main.css";
 $dashboard_route = "./dashboard.php";
+$logout_route = "./logout.php";
 include "../templates/header.php";
 require "../db_helper.php";
 
@@ -26,6 +27,8 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
 
   $user = mysqli_fetch_assoc($user_result);
   $useremail = $user["email"];
+} else {
+  header("location: ../error.php?error=403");
 }
 
 ?>
@@ -62,9 +65,6 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
   </table>
 </main>
 
-<footer>
-  <p>Made with ❤️ by Akash and Srikar</p>
-</footer>
-</body>
-
-</html>
+<?php
+include "../templates/footer.php";
+?>

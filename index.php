@@ -1,6 +1,6 @@
 <?php
 $title = "Shorty | URL shortner";
-$css_path = "public/css/main.css";
+$css_path = "public/css/style.css";
 include "templates/header.php";
 require "db_helper.php";
 
@@ -114,11 +114,8 @@ if (isset($_POST["submit"])) {
   <?php } ?>
 </main>
 
-<footer>
-  <p>Made with ❤️ by Akash and Srikar</p>
-</footer>
 
-<script src="./public/js/urlValidation.js"></script>
-</body>
-
-</html>
+<?php
+$js_route = "./public/js/urlValidation.js";
+include "./templates/footer.php";
+?>

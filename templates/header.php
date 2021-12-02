@@ -23,9 +23,10 @@ session_start();
         <?php
         if (isset($_SESSION["userid"])) {
           $dashboard_route_final =  $dashboard_route ?? 'User/dashboard.php';
+          $logout_route_final = $logout_route ?? "User/logout.php";
 
           echo "<li><a href='$dashboard_route_final?id={$_SESSION["username"]}'>Dashboard</a></li>";
-          echo "<li><a href='User/logout.php'>Logout</a></li>";
+          echo "<li><a href='$logout_route_final'>Logout</a></li>";
         } else {
           $login_route_final =  $login_route ?? 'User/login.php';
           $register_route_final = $register_route ?? 'User/register.php';
