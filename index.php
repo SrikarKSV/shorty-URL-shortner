@@ -48,13 +48,13 @@ if (isset($_POST["submit"])) {
   $generated_id = bin2hex($bytes);
 
   if ($expiry_date == NULL && $userId == NULL) {
-    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', NULL, NULL);";
+    $insert_sql = "INSERT INTO url(id, url, expiryDate, userId) VALUES('$generated_id', '$url', NULL, NULL);";
   } else if ($expiry_date && $userId == NULL) {
-    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', '$expiry_date', NULL);";
+    $insert_sql = "INSERT INTO url(id, url, expiryDate, userId) VALUES('$generated_id', '$url', '$expiry_date', NULL);";
   } else if ($expiry_date == NULL && $userId) {
-    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', NULL, '$userId');";
+    $insert_sql = "INSERT INTO url(id, url, expiryDate, userId) VALUES('$generated_id', '$url', NULL, '$userId');";
   } else if ($expiry_date && $userId) {
-    $insert_sql = "INSERT INTO url VALUES('$generated_id', '$url', '$expiry_date', '$userId');";
+    $insert_sql = "INSERT INTO url(id, url, expiryDate, userId) VALUES('$generated_id', '$url', '$expiry_date', '$userId');";
   }
 
   if (!mysqli_query($conn, $insert_sql)) {
