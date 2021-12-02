@@ -26,7 +26,6 @@ if (isset($_POST["submit"])) {
       exit();
     }
 
-
     $user = mysqli_fetch_assoc($result);
 
     $pwdHashed = $user["password"];
@@ -36,13 +35,11 @@ if (isset($_POST["submit"])) {
       ini_set('session.cookie_lifetime', 60 * 60 * 24 * 7);
       session_start();
 
-
       $_SESSION["userid"] = $user["id"];
       $_SESSION["username"] = $user["username"];
       header("location: ../index.php");
       exit();
     }
-
 
     mysqli_close($conn);
   }
