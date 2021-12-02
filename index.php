@@ -89,15 +89,20 @@ if (isset($_POST["submit"])) {
 
 <main>
 
-  <form action="index.php" method="post">
-    <label for="url">URL</label>
+  <form class="url-form" action="index.php" method="post">
+    <label for="url">URL (Include protocol before the URL)</label>
     <input type="text" name="url" id="url">
+    <span class="enter-url">Enter your URL</span>
+    <span class="invalid-url">Enter valid URL</span>
+
     <p>Set expiry date for the shortened link</p>
     <label for="permanent">Permanent</label>
     <input type="radio" name="expiryDate" id="permanent" value="permanent">
     <label for="custom">Custom</label>
     <input type="radio" name="expiryDate" id="custom" value="custom">
     <input type="datetime-local" name="customDate">
+    <span class="choose-date">Choose expiry date</span>
+    <span class="set-date">Set custom expiry date</span>
     <input type="submit" name="submit" value="Shorten">
   </form>
 
@@ -112,6 +117,8 @@ if (isset($_POST["submit"])) {
 <footer>
   <p>Made with ❤️ by Akash and Srikar</p>
 </footer>
+
+<script src="./public/js/urlValidation.js"></script>
 </body>
 
 </html>
