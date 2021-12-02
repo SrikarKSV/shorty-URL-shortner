@@ -38,11 +38,10 @@ if (isset($_GET["id"])) {
 }
 
 if (isset($_POST["submit"])) {
-  $conn = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DATABASENAME);
-  $url = $_POST["url"];
-  $expiry_date = $_POST["expiryDate"] == "custom" ? $_POST["customDate"] : NULL;
+  $url = mysqli_real_escape_string($conn, htmlspecialchars($_POST["url"]));
+  $expiry_date = mysqli_real_escape_string($conn, htmlspecialchars($_POST["expiryDate"] == "custom" ? $_POST["customDate"] : NULL));
   $userId = isset($_SESSION["userid"]) ? $_SESSION["userid"] : NULL;
-  $expiry_date_set = $_POST["expiryDate"];
+  $expiry_date_set = mysqli_real_escape_string($conn, htmlspecialchars($_POST["expiryDate"]));
 
   $bytes = random_bytes(5);
   $generated_id = bin2hex($bytes);

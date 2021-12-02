@@ -12,10 +12,11 @@ if (isset($_SESSION["userid"])) {
 }
 
 if (isset($_POST["submit"])) {
-  $username = $_POST["username"];
-  $pwd = $_POST["password"];
-
   require "../db_helper.php";
+
+  $username = mysqli_real_escape_string($conn, htmlspecialchars($_POST["username"]));
+  $pwd = mysqli_real_escape_string($conn, htmlspecialchars($_POST["password"]));
+
 
   function loginUser($conn, $username, $pwd)
   {

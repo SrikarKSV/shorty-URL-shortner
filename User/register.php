@@ -12,12 +12,13 @@ if (isset($_SESSION["userid"])) {
 }
 
 if (isset($_POST["submit"])) {
-  $email = $_POST["email"];
-  $username = $_POST["username"];
-  $pwd = $_POST["password"];
-  $pwdRepeat = $_POST["repeatPassword"];
-
   require "../db_helper.php";
+
+  $email = mysqli_real_escape_string($conn, htmlspecialchars($_POST["email"]));
+  $username = mysqli_real_escape_string($conn, htmlspecialchars($_POST["username"]));
+  $pwd = mysqli_real_escape_string($conn, htmlspecialchars($_POST["password"]));
+  $pwdRepeat = mysqli_real_escape_string($conn, htmlspecialchars($_POST["repeatPassword"]));
+
 
   function checkUserExist($conn, $username)
   {
