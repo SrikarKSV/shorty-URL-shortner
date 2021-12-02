@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
   $email = $_POST["email"];
   $username = $_POST["username"];
   $pwd = $_POST["password"];
-  $pwdRepeat = $_POST["repeat-password"];
+  $pwdRepeat = $_POST["repeatPassword"];
 
   require "../db_helper.php";
 
@@ -35,18 +35,27 @@ if (isset($_POST["submit"])) {
 ?>
 
 <main>
-  <form action="register.php" method="POST">
+  <form class="register-form" action="register.php" method="POST">
     <label for="email">Email</label>
     <input type="email" name="email" id="email">
+    <span class="enter-email">Enter your email</span>
+    <span class="invalid-email">Enter valid email</span>
     <label for="username">Username</label>
     <input type="text" name="username" id="username">
+    <span class="enter-username">Enter your Username</span>
+    <span class="invalid-username">Enter valid Username(It can only have letters & numbers)</span>
     <label for="password">Password</label>
     <input type="password" name="password" id="password">
+    <span class="enter-password">Enter your Password</span>
+    <span class="invalid-password">Enter valid Password(It can only have letters, spaces & numbers)</span>
     <label for="repeat-password">Repeat password</label>
-    <input type="password" name="repeat-password" id="repeat-password">
+    <input type="password" name="repeatPassword" id="repeatPassword">
+    <span class="enter-rpassword">Confirm your password</span>
+    <span class="invalid-rpassword">Both password don't match</span>
     <input type="submit" name="submit" value="Sign up">
   </form>
 </main>
+<script src="../public/js/registerValidation.js"></script>
 </body>
 
 </html>

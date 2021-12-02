@@ -49,14 +49,19 @@ if (isset($_POST["submit"])) {
 ?>
 
 <main>
-  <form action="login.php" method="POST">
+  <form class="login-form" action="login.php" method="POST">
     <label for="username">Username</label>
     <input type="text" name="username" id="username">
+    <span class="enter-username">Enter your Username</span>
+    <span class="invalid-username">Enter valid Username(It can only have letters & numbers)</span>
     <label for="password"></label>
     <input type="password" name="password" id="password">
+    <span class="enter-password">Enter your Password</span>
+    <span class="invalid-password">Enter valid Password(It can only have letters, spaces & numbers)</span>
     <input type="submit" name="submit" value="Sign up">
   </form>
 </main>
+<script src="../public/js/loginValidation.js"></script>
 </body>
 
 </html>
