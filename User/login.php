@@ -5,6 +5,7 @@ $login_route = "./login.php";
 $register_route = "./register.php";
 include "../templates/header.php";
 
+// Sending back if user already logged in
 if (isset($_SESSION["userid"])) {
   header("location: ../index.php");
   exit();
@@ -19,9 +20,10 @@ if (isset($_POST["submit"])) {
   function loginUser($conn, $username, $pwd)
   {
     $sql = "SELECT * FROM user WHERE username='$username';";
-    if ($result = mysqli_query($conn, $sql)) {
-    } else {
-      die('Query error: ' . mysqli_error($conn));
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+      header("location: ../error.php?error=500");
+      exit();
     }
 
 
@@ -50,6 +52,9 @@ if (isset($_POST["submit"])) {
 
 <main>
   <form class="login-form" action="login.php" method="POST">
+    <?php if (isset($_GET["success"]) && $_GET["success"] == "registered") {
+      echo "<span class='registered show'>You have been registered, please login.</span>";
+    } ?>
     <label for="username">Username</label>
     <input type="text" name="username" id="username">
     <span class="enter-username">Enter your Username</span>
