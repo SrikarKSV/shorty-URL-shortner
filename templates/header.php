@@ -22,11 +22,12 @@ session_start();
         <?php
         if (isset($_SESSION["userid"])) {
           echo "<li><a href='profile.php'>Profile</a></li>";
-          echo "<li><a href='logout.php'>Logout</a></li>";
+          echo "<li><a href='User/logout.php'>Logout</a></li>";
         } else {
           $login_route_final =  $login_route ?? 'User/login.php';
-          echo "<li><a href='$login_route_final'>Login</a></li>";
           $register_route_final = $register_route ?? 'User/register.php';
+
+          echo "<li><a href='$login_route_final'>Login</a></li>";
           echo "<li><a href='$register_route_final'>Register</a></li>";
         }
         ?>
