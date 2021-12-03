@@ -55,3 +55,16 @@ tbody tr.expired td::before {
   padding: 0.3em 0.5em;
   border-radius: 3px;
 }
+
+.copy {
+  cursor: pointer;
+}
+
+.copy-directions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.copied {
+  text-align: center;
+}
