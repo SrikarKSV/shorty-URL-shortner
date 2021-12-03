@@ -31,7 +31,7 @@ if (isset($_GET["id"])) {
   if ($expiry_date == NULL || $now < $expiry_date) {
     header("Location: {$shortened_url['url']}");
   } else {
-    header("location: ./error?error=404");
+    header("location: ./error.php?error=404");
   }
 
   mysqli_close($conn);

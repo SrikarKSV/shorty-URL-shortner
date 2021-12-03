@@ -6,6 +6,7 @@ $logout_route = "./logout.php";
 include "../templates/header.php";
 require "../db_helper.php";
 
+date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
 if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
   $username = $_SESSION["username"];
   $userid = $_SESSION["userid"];
@@ -53,9 +54,11 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
           <?php while ($row = mysqli_fetch_array($all_shortened_links_result)) {
             $now = new DateTime("now");
             $expiry_date = $row["expiryDate"];
+            $expiry_date_object = new DateTime($row["expiryDate"]);
+            $isExpired = NULL;
             if ($expiry_date == NULL) {
               $isExpired = FALSE;
-            } else if ($now > $expiry_date) {
+            } else if ($now > $expiry_date_object) {
               $isExpired = TRUE;
             }
           ?>
