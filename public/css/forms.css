@@ -12,6 +12,10 @@
   max-width: 50%;
 }
 
+.form-container.large-size {
+  max-width: 90%;
+}
+
 .form-container h2 {
   margin-top: 0;
 }

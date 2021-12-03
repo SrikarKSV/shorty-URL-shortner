@@ -1,0 +1,57 @@
+.table-container {
+  overflow-x: auto;
+}
+
+.table-container h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+  overflow: hidden;
+  background: #222;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  border-radius: 5px;
+}
+
+table a {
+  color: #fff;
+}
+
+th,
+td {
+  padding: 15px;
+  color: #fff;
+}
+
+th {
+  text-align: left;
+}
+
+thead th {
+  background-color: #454e56;
+  color: #b2becd;
+}
+
+tbody tr:hover {
+  background-color: rgba(178, 190, 205, 0.5);
+}
+
+tbody tr.expired {
+  opacity: 0.5;
+  position: relative;
+}
+
+tbody tr.expired td::before {
+  content: "expired";
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  transform: rotate(-15deg);
+  background: #dc0530;
+  padding: 0.3em 0.5em;
+  border-radius: 3px;
+}
