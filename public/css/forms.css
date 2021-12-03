@@ -43,6 +43,7 @@ form span {
   display: none;
   background: #dc0530;
   color: #fff;
+  width: -moz-fit-content;
   width: fit-content;
   padding: 0.3em 0.5em;
   border-radius: 2px;
@@ -67,6 +68,7 @@ form p {
 
 .radio-control {
   display: block;
+  width: -moz-fit-content;
   width: fit-content;
   border: 2px solid #fa8142;
   border-radius: 3px;
