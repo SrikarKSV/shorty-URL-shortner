@@ -108,7 +108,7 @@ if (isset($_POST["submit"])) {
         <span class="choose-date">Choose expiry date</span>
         <span class="set-date">Set custom expiry date</span>
       </div>
-      <input class="btn" type="submit" name="submit" value="Shorten">
+      <input class="btn shorten-btn" type="submit" name="submit" value="Shorten">
     </form>
   </div>
 

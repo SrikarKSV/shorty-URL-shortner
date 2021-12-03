@@ -87,6 +87,15 @@ input#custom:checked ~ input[type="datetime-local"] {
   display: block;
 }
 
+.btn.shorten-btn {
+  color: #fff;
+  background-color: #09c372;
+}
+
+.btn.shorten-btn:hover {
+  border: 2px solid #fff;
+}
+
 @media only screen and (max-width: 71.875em) {
   /* 1150px */
   .form-container :is(h2, h3) {
