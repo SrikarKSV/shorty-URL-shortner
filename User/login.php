@@ -44,7 +44,7 @@ if (isset($_POST["submit"])) {
 
       $_SESSION["userid"] = $user["id"];
       $_SESSION["username"] = $user["username"];
-      header("location: ../index.php");
+      header("location: ../index.php?success=loginsuccess");
       exit();
     } else {
       header("location: ./login.php?error=wronglogin");
