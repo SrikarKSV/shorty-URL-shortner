@@ -3,7 +3,7 @@
 </footer>
 
 <?php if (isset($js_route)) {
-  echo "<script src='$js_route></script>";
+  echo "<script src='$js_route'></script>";
 }
 ?>
 
