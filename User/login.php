@@ -1,6 +1,6 @@
 <?php
 $title = "Login | URL shortner";
-$css_path = "../public/css/main.css";
+$css_path = "../public/css/style.css";
 $login_route = "./login.php";
 $register_route = "./register.php";
 include "../templates/header.php";
@@ -49,20 +49,23 @@ if (isset($_POST["submit"])) {
 ?>
 
 <main>
-  <form class="login-form" action="login.php" method="POST">
-    <?php if (isset($_GET["success"]) && $_GET["success"] == "registered") {
-      echo "<span class='registered show'>You have been registered, please login.</span>";
-    } ?>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
-    <span class="enter-username">Enter your Username</span>
-    <span class="invalid-username">Enter valid Username(It can only have letters & numbers)</span>
-    <label for="password"></label>
-    <input type="password" name="password" id="password">
-    <span class="enter-password">Enter your Password</span>
-    <span class="invalid-password">Enter valid Password(It can only have letters, spaces & numbers)</span>
-    <input type="submit" name="submit" value="Sign up">
-  </form>
+  <div class="form-container medium-size">
+    <h2>Login</h2>
+    <form class="login-form" action="login.php" method="POST">
+      <?php if (isset($_GET["success"]) && $_GET["success"] == "registered") {
+        echo "<p class='flash success'>You have been registered, please login.</p>";
+      } ?>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username">
+      <span class="enter-username">Enter your Username</span>
+      <span class="invalid-username">Enter valid Username(It can only have letters & numbers)</span>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password">
+      <span class="enter-password">Enter your Password</span>
+      <span class="invalid-password">Enter valid Password(It can only have letters, spaces & numbers)</span>
+      <input class="btn" type="submit" name="submit" value="Sign up">
+    </form>
+  </div>
 </main>
 
 <?php
