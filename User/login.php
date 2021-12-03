@@ -63,7 +63,7 @@ if (isset($_POST["submit"])) {
       <input type="password" name="password" id="password">
       <span class="enter-password">Enter your Password</span>
       <span class="invalid-password">Enter valid Password(It can only have letters, spaces & numbers)</span>
-      <input class="btn" type="submit" name="submit" value="Login">
+      <input class="btn" type="submit" name="submit" value="Log in">
     </form>
   </div>
 </main>

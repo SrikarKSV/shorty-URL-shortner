@@ -94,7 +94,7 @@ if (isset($_POST["submit"])) {
       <p>Set expiry date for the shortened link</p>
       <div class="radio-button-container">
         <div class="radio-control">
-          <input type="radio" name="expiryDate" id="permanent" value="permanent">
+          <input type="radio" name="expiryDate" id="permanent" value="permanent" checked>
           <label for="permanent">Permanent</label>
         </div>
         <div class="radio-control">
