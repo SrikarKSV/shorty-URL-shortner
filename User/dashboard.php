@@ -76,7 +76,7 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
             }
           ?>
             <tr class="<?php echo $isExpired ? "expired" : NULL ?>">
-              <td><a target="_blank" href="https://shorty.ml?id=<?php echo $row["id"] ?>">shorty.ml?id=<span><?php echo $row["id"] ?></span></a></td>
+              <td><a target="_blank" href="http://localhost/shorty-url-shortner?id=<?php echo $row["id"] ?>">http://localhost/shorty-url-shortner?id=<span><?php echo $row["id"] ?></span></a></td>
               <td class="copy" data-link="<?php echo $row["url"] ?>"><?php echo strlen($row["url"]) < 45 ? $row["url"] : substr($row["url"], 0, 45) . "..."; ?></td>
               <td><?php echo $row["expiryDate"] ?? "Not set" ?></td>
               <td>
