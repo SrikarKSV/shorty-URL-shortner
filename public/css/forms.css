@@ -16,8 +16,12 @@
   max-width: 90%;
 }
 
-.form-container h2 {
+.form-container :is(h2, h3) {
   margin-top: 0;
+}
+
+.form-container h3 {
+  text-align: center;
 }
 
 form label {

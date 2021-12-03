@@ -1,11 +1,11 @@
-const tableContainer = document.querySelector(".table-container");
+const formContainer = document.querySelector(".form-container");
 const table = document.querySelector("table");
 const tbody = document.querySelector("table tbody");
 const originalLink = document.querySelector(".copy");
 
 if (tbody.innerHTML.trim() == "") {
   table.remove();
-  tableContainer.innerHTML = "<h3>No URLs shortened!</h3>";
+  formContainer.innerHTML = "<h3>No URLs shortened!</h3>";
 }
 
 tbody.addEventListener("click", copyOriginalLink);
