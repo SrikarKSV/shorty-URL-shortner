@@ -74,12 +74,12 @@ if (isset($_POST["submit"])) {
       <label for="username">Username</label>
       <input type="text" name="username" id="username">
       <span class="enter-username">Enter your Username</span>
-      <span class="invalid-username">Enter valid Username(It can only have letters & numbers)</span>
+      <span class="invalid-username">Enter valid Username</span>
 
       <label for="password">Password</label>
       <input type="password" name="password" id="password">
       <span class="enter-password">Enter your Password</span>
-      <span class="invalid-password">Enter valid Password(It can only have letters, spaces & numbers)</span>
+      <span class="invalid-password">Enter valid Password</span>
 
       <label for="repeatPassword">Repeat password</label>
       <input type="password" name="repeatPassword" id="repeatPassword">

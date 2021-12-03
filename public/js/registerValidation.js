@@ -17,7 +17,7 @@ function validateForm(event) {
   const password = event.target.password.value;
   const confirmPassword = event.target.repeatPassword.value;
 
-  const emailRegex = /^[a-zA-Z_.-]+@[a-zA-z]+\.[a-zA-z]{2,4}$/;
+  const emailRegex = /^\S+@\S+\.\S+$/;
   const userameRegex = /^[a-zA-Z0-9]{3,10}$/;
   const passwordRegex = /^[a-zA-Z0-9 ]{6,}$/;
 
