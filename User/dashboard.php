@@ -1,5 +1,5 @@
 <?php
-$title = "Dashboard | URL shortner";
+$title = "Dashboard | Shorty";
 $css_path = "../public/css/style.css";
 $dashboard_route = "./dashboard.php";
 $logout_route = "./logout.php";
@@ -43,7 +43,7 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
       <table>
         <thead>
           <tr>
-            <th>Shortened link id</th>
+            <th>Shortened link</th>
             <th>Original link</th>
             <th>Expiry date</th>
           </tr>
@@ -63,14 +63,15 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
             }
           ?>
             <tr class="<?php echo $isExpired ? "expired" : NULL ?>">
-              <td><a target="_blank" href="http://localhost/shorty-url-shortner?id=<?php echo $row["id"] ?>"><?php echo $row["id"] ?></a></td>
-              <td><a target="_blank" href="<?php echo $row["url"] ?>"><?php echo $row["url"] ?></a></td>
+              <td><a href="https://shorty.ml?id=<?php echo $row["id"] ?>">shorty.ml?id=<span><?php echo $row["id"] ?></span></a></td>
+              <td class="copy" data-link="<?php echo $row["url"] ?>"><?php echo strlen($row["url"]) < 45 ? $row["url"] : substr($row["url"], 0, 45) . "..."; ?></td>
               <td><?php echo $row["expiryDate"] ?? "Not set" ?></td>
             </tr>
           <?php } ?>
         </tbody>
       </table>
     </div>
+    <p class="copy-directions">⭐ Click on original link to copy it</p>
   </div>
 </main>
 

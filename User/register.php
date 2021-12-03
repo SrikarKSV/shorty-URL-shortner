@@ -1,5 +1,5 @@
 <?php
-$title = "Register | URL shortner";
+$title = "Register | Shorty";
 $css_path = "../public/css/style.css";
 $login_route = "./login.php";
 $register_route = "./register.php";
