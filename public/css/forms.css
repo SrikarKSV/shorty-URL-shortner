@@ -80,3 +80,53 @@ form p {
 input#custom:checked ~ input[type="datetime-local"] {
   display: block;
 }
+
+@media only screen and (max-width: 71.875em) {
+  /* 1150px */
+  .form-container :is(h2, h3) {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 43.75em) {
+  /* 700px */
+  .form-container {
+    max-width: 90%;
+  }
+
+  .form-container.medium-size {
+    max-width: 80%;
+  }
+
+  form label {
+    font-size: 1rem;
+  }
+
+  form :is(input[type="text"], input[type="password"], input[type="email"]) {
+    padding: 0.3em 0.4em;
+    font-size: 1rem;
+  }
+
+  form p {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 25em) {
+  /* 400px */
+  .form-container :is(h2, h3) {
+    font-size: 1.5rem;
+  }
+
+  .form-container.medium-size {
+    max-width: 95%;
+  }
+
+  form label {
+    font-size: 0.9rem;
+  }
+
+  form p {
+    font-size: 1rem;
+  }
+}

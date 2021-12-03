@@ -35,11 +35,12 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
 ?>
 
 <main>
-  <h2>Hello, <?php echo $username ?> !</h2>
-  <p>Your email: <?php echo $useremail ?></p>
+  <h2 class="greeting">Hello, <?php echo $username ?> !</h2>
+  <p class="greeting">Your email: <?php echo $useremail ?></p>
 
   <div class="form-container large-size">
     <div class="table-container">
+      <h3>List of all the links shortened:</h3>
       <table>
         <thead>
           <tr>

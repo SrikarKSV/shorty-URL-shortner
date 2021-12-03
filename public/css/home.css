@@ -42,3 +42,24 @@ footer {
   margin-top: 2rem;
   text-align: center;
 }
+
+@media only screen and (max-width: 71.875em) {
+  /* 1150px */
+  .container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  /* 600px */
+  header {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 31.25em) {
+  /* 500px */
+  .form-container h2 {
+    text-align: center;
+  }
+}
