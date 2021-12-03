@@ -13,6 +13,8 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
 
   if ($_GET["id"] != $username) {
     header("location: ../error.php?error=403");
+    mysqli_close($conn);
+    exit();
   }
 
   $user_info_sql = "SELECT * FROM user WHERE id='$userid';";
@@ -23,6 +25,7 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
 
   if (!$user_result || !$all_shortened_links_result) {
     header("location: ../error.php?error=500");
+    mysqli_close($conn);
     exit();
   }
 
@@ -39,14 +42,23 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
   <p class="greeting">Your email: <?php echo $useremail ?></p>
 
   <div class="form-container large-size">
+    <?php if (isset($_GET["error"]) && $_GET["error"] == "wrongid") {
+      echo "<span class='url-doesnt-exist'>URL doesn't exist</span>";
+    } ?>
+
+    <?php if (isset($_GET["success"]) && $_GET["success"] == "deleted") { ?>
+      <p class="flash success">Deleted the shrinked URL</p>
+    <?php } ?>
+
     <div class="table-container">
-      <h3>List of all the links shortened:</h3>
+      <h3>Shortened links:</h3>
       <table>
         <thead>
           <tr>
             <th>Shortened link</th>
             <th>Original link</th>
             <th>Expiry date</th>
+            <th>Delete link</th>
           </tr>
         </thead>
 
@@ -67,8 +79,13 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
               <td><a target="_blank" href="https://shorty.ml?id=<?php echo $row["id"] ?>">shorty.ml?id=<span><?php echo $row["id"] ?></span></a></td>
               <td class="copy" data-link="<?php echo $row["url"] ?>"><?php echo strlen($row["url"]) < 45 ? $row["url"] : substr($row["url"], 0, 45) . "..."; ?></td>
               <td><?php echo $row["expiryDate"] ?? "Not set" ?></td>
+              <td>
+                <form action="./delete.php" method="POST"><input type="text" name="id" value="<?php echo "{$row["id"]}" ?>" hidden> <input type="submit" name="delete" class="delete" value="Delete"></form>
+              </td>
             </tr>
-          <?php } ?>
+          <?php }
+          mysqli_close($conn);
+          ?>
         </tbody>
       </table>
     </div>
