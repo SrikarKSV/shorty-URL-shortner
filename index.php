@@ -76,42 +76,40 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-<style>
-  input[type="datetime-local"] {
-    display: none;
-  }
-
-  input#custom:checked+input[type="datetime-local"] {
-    display: block;
-  }
-</style>
-
-
 <main>
 
-  <form class="url-form" action="index.php" method="post">
-    <label for="url">URL (Include protocol before the URL)</label>
-    <input type="text" name="url" id="url">
-    <span class="enter-url">Enter your URL</span>
-    <span class="invalid-url">Enter valid URL</span>
 
-    <p>Set expiry date for the shortened link</p>
-    <label for="permanent">Permanent</label>
-    <input type="radio" name="expiryDate" id="permanent" value="permanent">
-    <label for="custom">Custom</label>
-    <input type="radio" name="expiryDate" id="custom" value="custom">
-    <input type="datetime-local" name="customDate">
-    <span class="choose-date">Choose expiry date</span>
-    <span class="set-date">Set custom expiry date</span>
-    <input type="submit" name="submit" value="Shorten">
-  </form>
-
-
-  <?php
-  if ($shortened_url) {
-  ?>
-    <p>URL is shortened: <a href="<?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?>"><?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?></a></p>
+  <?php if ($shortened_url) { ?>
+    <p class="flash success">Success! Shortened URL: <a href="<?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?>"><?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?></a></p>
   <?php } ?>
+
+  <div class="form-container">
+    <h2>Shorten your lengthy URL</h2>
+    <form class="url-form" action="index.php" method="post">
+      <label for="url">Enter URL (Include protocol before the URL)</label>
+      <input type="text" name="url" id="url">
+      <span class="enter-url">Enter your URL</span>
+      <span class="invalid-url">Enter valid URL</span>
+
+      <p>Set expiry date for the shortened link</p>
+      <div class="radio-button-container">
+        <div class="radio-control">
+          <input type="radio" name="expiryDate" id="permanent" value="permanent">
+          <label for="permanent">Permanent</label>
+        </div>
+        <div class="radio-control">
+          <input type="radio" name="expiryDate" id="custom" value="custom">
+          <label for="custom">Custom</label>
+          <input type="datetime-local" name="customDate">
+        </div>
+        <span class="choose-date">Choose expiry date</span>
+        <span class="set-date">Set custom expiry date</span>
+      </div>
+      <input class="btn" type="submit" name="submit" value="Shorten">
+    </form>
+  </div>
+
+
 </main>
 
 

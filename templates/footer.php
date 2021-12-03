@@ -6,7 +6,7 @@
   echo "<script src='$js_route'></script>";
 }
 ?>
-
+</div>
 </body>
 
 </html>
