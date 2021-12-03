@@ -83,7 +83,7 @@ if (isset($_POST["submit"])) {
     <p class="flash success">Success! Shortened URL: <a href="<?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?>"><?php echo "http://localhost/shorty-url-shortner?id={$shortened_url['id']}" ?></a></p>
   <?php } ?>
   <?php if (isset($_GET["success"]) && $_GET["success"] == "loginsuccess") { ?>
-    <p class="flash success">Welcome back! You have been logged in!</p>
+    <p class="flash success">Welcome back! You have been logged in.</p>
   <?php } ?>
 
   <div class="form-container">

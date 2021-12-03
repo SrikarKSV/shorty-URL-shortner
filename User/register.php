@@ -64,7 +64,7 @@ if (isset($_POST["submit"])) {
     <h2>Register</h2>
     <form class="register-form" action="register.php" method="POST">
       <?php if (isset($_GET["error"]) && $_GET["error"] == "usernametaken") {
-        echo "<span class='usernametaken show'>Username already taken, try another.</span>";
+        echo "<span class='show'>Username already taken, try another.</span>";
       } ?>
       <label for="email">Email</label>
       <input type="email" name="email" id="email">

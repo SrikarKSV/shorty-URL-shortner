@@ -66,10 +66,10 @@ if (isset($_POST["submit"])) {
         echo "<p class='flash success'>You have been registered, please login.</p>";
       } ?>
       <?php if (isset($_GET["error"]) && $_GET["error"] == "nousername") {
-        echo "<span class='usernametaken show'>Username doesn't exist.</span>";
+        echo "<span class='show'>Username doesn't exist.</span>";
       } ?>
       <?php if (isset($_GET["error"]) && $_GET["error"] == "wronglogin") {
-        echo "<span class='usernametaken show'>Password is not correct.</span>";
+        echo "<span class='show'>Password is not correct.</span>";
       } ?>
       <label for="username">Username</label>
       <input type="text" name="username" id="username">
