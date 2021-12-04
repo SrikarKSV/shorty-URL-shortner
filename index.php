@@ -85,6 +85,9 @@ if (isset($_POST["submit"])) {
   <?php if (isset($_GET["success"]) && $_GET["success"] == "loginsuccess") { ?>
     <p class="flash success">Welcome back! You have been logged in.</p>
   <?php } ?>
+  <?php if (isset($_GET["success"]) && $_GET["success"] == "logoutsuccess") { ?>
+    <p class="flash success">Logged out, please come again!</p>
+  <?php } ?>
 
   <div class="form-container">
     <h2>Shorten your lengthy URL</h2>
