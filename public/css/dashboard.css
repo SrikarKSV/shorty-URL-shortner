@@ -48,12 +48,12 @@ tbody tr:hover {
   background-color: rgba(178, 190, 205, 0.5);
 }
 
-tbody tr.expired {
+tbody td.expired {
   opacity: 0.5;
   position: relative;
 }
 
-tbody tr.expired td::before {
+tbody td.expired-banner::before {
   content: "expired";
   position: absolute;
   top: 10px;
