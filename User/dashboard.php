@@ -77,7 +77,7 @@ if (isset($_SESSION["userid"]) && isset($_GET["id"])) {
           ?>
             <tr>
               <td class="<?php echo $isExpired ? "expired expired-banner" : NULL ?>"><a target="_blank" href="http://localhost/shorty-url-shortner?id=<?php echo $row["id"] ?>">http://localhost/shorty-url-shortner?id=<span><?php echo $row["id"] ?></span></a></td>
-              <td class="copy <?php echo $isExpired ? "expired" : NULL ?>" data-link="<?php echo $row["url"] ?>"><?php echo strlen($row["url"]) < 45 ? $row["url"] : substr($row["url"], 0, 45) . "..."; ?></td>
+              <td class="copy <?php echo $isExpired ? "expired" : NULL ?>" data-link="<?php echo $row["url"] ?>"><?php echo strlen($row["url"]) < 30 ? $row["url"] : substr($row["url"], 0, 30) . "..."; ?></td>
               <td class="<?php echo $isExpired ? "expired" : NULL ?>"><?php echo $row["expiryDate"] ?? "Not set" ?></td>
               <td>
                 <form action="./delete.php" method="POST"><input type="text" name="id" value="<?php echo "{$row["id"]}" ?>" hidden> <input type="submit" name="delete" class="delete" value="Delete"></form>

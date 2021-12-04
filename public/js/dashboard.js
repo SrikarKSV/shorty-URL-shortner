@@ -22,9 +22,9 @@ function copyOriginalLink(event) {
     setTimeout(() => {
       link.classList.remove("copied");
       link.innerText =
-        link.dataset.link.length < 41
+        link.dataset.link.length < 26
           ? link.dataset.link
-          : link.dataset.link.substring(0, 41) + "...";
+          : link.dataset.link.substring(0, 26) + "...";
     }, 1000);
   }
 }
